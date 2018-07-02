@@ -1,8 +1,7 @@
 "use strict";
 
 module.exports = Data;
-
-function Data(id, parent_id, link_id, name, author, body, subreddit_id,subreddit,score,created_utc){
+/*function Data(id, parent_id, link_id, name, author, body, subreddit_id, subreddit, score, created_utc) {
 
   this.id = id;
   this.parent_id = parent_id;
@@ -14,5 +13,11 @@ function Data(id, parent_id, link_id, name, author, body, subreddit_id,subreddit
   this.subreddit = subreddit;
   this.score = score;
   this.created_utc = created_utc;
+
+}*/
+function Data(subreddit_id) {
+
+  this.subreddit_id = subreddit_id;
+
 
 }

@@ -6,7 +6,8 @@
   "dependencies": {
     "better-sqlite3": "^4.1.4",
     "decompress": "^4.2.0",
-    "decompress-bzip2": "^4.0.0"
+    "decompress-bzip2": "^4.0.0",
+    "moment": "^2.22.2"
   },
   "devDependencies": {},
   "scripts": {
