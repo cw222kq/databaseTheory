@@ -8,8 +8,11 @@ let moment = require('moment');
 //console.log(result);
 /*let result = db.prepare('SELECT author FROM Comment LIMIT 40').all();
 console.log(result);*/
+
+
 console.log("startar tiden");
 startTime = new Date().getTime();
+
 
 // 1.How many comments have a specific user posted? FUNKAR KLAR!!!
 /*let result1 = db.prepare('SELECT COUNT(*) FROM Comment WHERE author is "wbeavis"').all();
@@ -32,12 +35,7 @@ console.log(result4);*/
 console.log(result5);*/
 
 // 6. Which subreddits have the highest and lowest scored comments? FUNKAR KLAR!!!
-let result6a = db.prepare('SELECT Subreddit, MAX(total_score) AS MaxScore FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id)').all();
-console.log(result6a);
-let result6 = db.prepare('SELECT Subreddit, MAX(total_score) AS total_score FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id) UNION SELECT Subreddit, MIN(total_score) AS total_score FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id)').all();
-console.log(result);
-/*let result6 = db.prepare('SELECT Subreddit, MAX(total_score) AS Score FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id) UNION SELECT Subreddit, MIN(total_score) AS Score FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id)').all();*/
-/*let result6 = db.prepare('SELECT Subreddit, MAX(total_score) FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS Subreddit FROM Comment LEFT JOIN Reddit ON (Reddit.subreddit_id = Comment.subreddit_id) GROUP BY Comment.subreddit_id)').all();
+/*let result6 = db.prepare('SELECT SubReddit, MAX(total_score) AS maxScore FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS SubReddit FROM Comment LEFT JOIN Reddit ON Reddit.subreddit_id = Comment.subreddit_id GROUP BY Reddit.subreddit_id) UNION SELECT SubReddit, MIN(total_score) AS minScore FROM (SELECT SUM(Comment.score) AS total_score, Reddit.subreddit AS SubReddit FROM Comment LEFT JOIN Reddit ON Reddit.subreddit_id = Comment.subreddit_id GROUP BY Reddit.subreddit_id)').all();
 console.log(result6);*/
 
 // 7. Given a specific user, list all the users he or she has potentially interacted with (i.e everyone who has commented on a link that the specific user has commented on) FUNKAR KLAR!!!
